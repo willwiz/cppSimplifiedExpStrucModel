@@ -136,9 +136,9 @@ public:
         }
     }
     
-    int stress(double vC[3], double res[3]);
+    int stress(double vC[4], double res[4]);
 
-    double strainenergy(double vC[3]);
+    double strainenergy(double vC[4]);
 };
 
 

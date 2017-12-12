@@ -96,7 +96,7 @@ EXTERN_C DLLEXPORT int ColExpModel( WolframLibraryData libData, mint Argc, MArgu
     double* vparm;
     double* results;
     
-    dims[0] = 3;
+    dims[0] = 4;
     
     T0 = MArgument_getMTensor(Args[0]);
     T1 = MArgument_getMTensor(Args[1]);

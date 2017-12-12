@@ -15,17 +15,20 @@ int main(int argc, const char * argv[]) {
 //    col_ens_PF_exp model(30,1.2);
     
     col_tissue_PF_exp model(1000, 0.0, 0.51, 30, 1.2);
-    double strain[3] = {1.0, 0.0, 1.0};
-//    double res;
+    double strain[4] = {1.2, 0.0, 0.0, 1.2};
+    double res[4];
 //    res = model.strainenergy(strain);
 
 //    beta_PDF pdf(1.2, 0.02, 1.12, 1.25);
     
-//    std::cout << res[0] << ",\n" << res[1] << ",\n" << res[2] <<",\n";
+
+    int err;
+    err = model.stress(strain, res);
     
-    double x;
-    std::cin >> x;
-    std::cout << model.strainenergy(strain);
+    std::cout << res[0] << ",\n" << res[1] << ",\n" << res[2] <<",\n" << res[3] <<",\n";
+    
+//    std::cin >> x;
+//    std::cout << ;
 //    std::cout << pdf.PDF(x);
 //    for (int i = 0; i < 20; i++) {
 //        std::cout << pdf.PDF(1.0 + i*0.3/20.0) <<"\n";

@@ -38,12 +38,12 @@ double col_fiber_SE (double lf, double ls)
 
 double col_ens_PF_exp::stress(double lf)
 {
-    return (exp(parB * (lf - lmax)) - scaling);
+    return (exp(parB * 0.5*(lf*lf - lmax)) - scaling);
 }
 
 double col_ens_PF_exp::strainenergy(double lf)
 {
-    double lfm1 = lf - 1.0;
+    double lfm1 = 0.5*(lf*lf - 1.0);
     return scaling*( (exp(parB * lfm1) - 1.0)/parB - lfm1);
 }
 
