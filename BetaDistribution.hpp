@@ -86,7 +86,7 @@ public:
     
     double ODF(double theta);
     
-private:
+//private:
     
     int is_isotropic = 0; //bool if the standard deviation exceed the maximum possible PI/sqrt(12.0), or is lower than the minimum 1.0e-4 (i.e. is approximately a delta function)
     int has_baseline = 0; //bool if there is baseline, aka d > 0
