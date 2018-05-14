@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include "BetaDistribution.hpp"
-#include "CollagenConstitutiveModels.hpp"
+#include "ModelCollagenTissueExp.hpp"
 
 int main(int argc, const char * argv[]) {
     

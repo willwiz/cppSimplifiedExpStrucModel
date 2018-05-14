@@ -33,7 +33,7 @@ int model_col_tissue_struc_PF::stress(double vF[4], double res[4])
         lambda_ens[i] = sqrt(vC[0]*cos2_theta[i] + (vC[1] + vC[2])*cossin_theta[i] + vC[3]*sin2_theta[i]);
         //        lambda_ens[i] = vC[0]*cos2_theta[i] + (vC[1] + vC[2])*cossin_theta[i] + vC[3]*sin2_theta[i];
         // find the weighted ensemble stress at each theta
-        Sf[i] = odfweight[i] * ensemblemodel.stress(lambda_ens[i], 1.0) / lambda_ens[i];
+        Sf[i] = odfweight[i] * ensemblemodel.stress(lambda_ens[i], lambda_recruit_scaling[i]);
     }
     
     {

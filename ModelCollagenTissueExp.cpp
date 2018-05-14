@@ -6,7 +6,7 @@
 //  Copyright © 2017 Will Zhang. All rights reserved.
 //
 
-#include "CollagenConstitutiveModels.hpp"
+#include "ModelCollagenTissueExp.hpp"
 
 int col_tissue_PF_exp::stress(double vC[4], double res[4])
 {
@@ -18,7 +18,7 @@ int col_tissue_PF_exp::stress(double vC[4], double res[4])
         lambda_ens[i] = sqrt(vC[0]*cos2_theta[i] + (vC[1] + vC[2])*cossin_theta[i] + vC[3]*sin2_theta[i]);
 //        lambda_ens[i] = vC[0]*cos2_theta[i] + (vC[1] + vC[2])*cossin_theta[i] + vC[3]*sin2_theta[i];
         // find the weighted ensemble stress at each theta
-        Sf[i] = odfweight[i] * ensmodel.stress(lambda_ens[i]) / lambda_ens[i];
+        Sf[i] = odfweight[i] * ensmodel.stress(lambda_ens[i]);
     }
     
     {
