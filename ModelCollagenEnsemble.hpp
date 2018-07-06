@@ -13,6 +13,8 @@
 #include "Gauss_Quad_Points.hpp"
 #include "BetaDistribution.hpp"
 
+//  This class and its methods for the fiber model are defined directly in the header file.
+//
 class model_col_fiber_PF
 {
     
@@ -33,6 +35,13 @@ public:
     //  Given the stretch of the fibers, this gives the stress for any slack stretch
     //      This is done to save 1 operation when integrating over the fiber model.
     
+    
+    double energydensity(double ls)
+    {
+        double m_1_ls = 1.0/ls;
+        double dummievariable = m_1_ls/m_1_lf - 1.0;
+        return dummievariable * dummievariable;
+    }
 };
 
 
@@ -82,19 +91,14 @@ public:
     
     void set_parameters(double mu, double sigma, double lb, double ub);
     
-    model_col_ens_struc_PF(): mean(1.2), stdev(0.015), lower_limit(1.0), upper_limit(1.24), Dx_PDF(1.2, 0.12, 1.12, 1.24), is_deltafunction(0)
-    {
-    };
-    // default constructor with common parameters for valve tissues
-    
-    model_col_ens_struc_PF(double mu, double sigma, double lb, double ub):
-    mean(mu), stdev(sigma), lower_limit(lb), upper_limit(ub), Dx_PDF(mu, sigma, lb, ub), is_deltafunction(0)
-    {
-    }
-    
-    
+    // default constructor, uses common material parameters from bovine pericardium
+    model_col_ens_struc_PF();
+    // This is the parameterized constructor
+    model_col_ens_struc_PF(double mu, double sigma, double lb, double ub);
     
     double stress(double lambda_fiber, double lambda_pushforward);
+    
+    double energydensity(double lambda_fiber, double lambda_pushforward);
 };
 
 #endif /* ModelCollagenEnsemble_hpp */

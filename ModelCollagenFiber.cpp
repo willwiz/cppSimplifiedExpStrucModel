@@ -6,6 +6,8 @@
 //  Copyright © 2018 Will Zhang. All rights reserved.
 //
 
+
+#include "math.h"
 #include "ModelCollagenFiber.hpp"
 
 

@@ -6,6 +6,7 @@
 //  Copyright © 2017 Will Zhang. All rights reserved.
 //
 
+#include <math.h>
 #include "kinematics.hpp"
 
 
@@ -264,7 +265,24 @@ void calc_E(double vF[4], double vM[2], double res[3]) {
 
 
 
+void calc_C_from_F(double vT[4], double res[4])
+{
+    double vTinv[4];
+    
+    trans2D(vT, vTinv);
+    
+    mult2D(vTinv, vT, res);
+}
 
+
+void calc_B_from_F(double vT[4], double res[4])
+{
+    double vTinv[4];
+    
+    trans2D(vT, vTinv);
+    
+    mult2D(vT, vTinv, res);
+}
 
 
 void basis_y_T(double vF[4], double vM[2], double res[3][4]) {

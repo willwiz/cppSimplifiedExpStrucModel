@@ -6,6 +6,8 @@
 //  Copyright © 2018 Will Zhang. All rights reserved.
 //
 
+
+
 #include "ModelCollagenEnsemble.hpp"
 
 
@@ -19,6 +21,19 @@ void model_col_ens_struc_PF::set_parameters(double mu, double sigma, double lb, 
     
     Dx_PDF.set_parameters(mu, sigma, lb, ub);
 }
+
+
+
+model_col_ens_struc_PF::model_col_ens_struc_PF(): mean(1.2), stdev(0.015), lower_limit(1.0), upper_limit(1.24), Dx_PDF(1.2, 0.12, 1.12, 1.24), is_deltafunction(0)
+{
+};
+
+
+model_col_ens_struc_PF::model_col_ens_struc_PF(double mu, double sigma, double lb, double ub):
+mean(mu), stdev(sigma), lower_limit(lb), upper_limit(ub), Dx_PDF(mu, sigma, lb, ub), is_deltafunction(0)
+{
+}
+
 
 
 
@@ -72,4 +87,10 @@ double model_col_ens_struc_PF::stress(double lambda_fiber, double lambda_pushfor
     }
     
     return (span * lambda_pushforward) * sum; // span is used to map the weight given the integration range, where are lambda_pushforward is used to scale the push forwarded distribution
+}
+
+
+double model_col_ens_struc_PF::energydensity(double lambda_fiber, double lambda_pushforward)
+{
+    return 0.0;     //  Currently in a dummy function will be filled in at a later time.
 }

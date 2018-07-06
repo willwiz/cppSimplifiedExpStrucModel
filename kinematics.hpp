@@ -9,9 +9,6 @@
 #ifndef kinematics_hpp
 #define kinematics_hpp
 
-#include <stdio.h>
-#include <math.h>
-
 void dot2D(double vF[4], double vM[2], double res[2]);
 
 void mult2D(double vT1[4], double vT2[4], double res[4]);
@@ -35,6 +32,12 @@ double calc_phi(double vF[4], double vM[2]);
 void calc_y(double vF[4], double vM[2], double res[3]);
 
 void calc_E(double vF[4], double vM[2], double res[3]);
+
+void calc_C_from_F(double vT[4], double res[4]);
+
+void calc_C_from_F(double vT[4], double res[4], double det);
+
+void calc_B_from_F(double vT[4], double res[4]);
 
 void basis_y_T(double vF[4], double vM[2], double res[3][4]);
 

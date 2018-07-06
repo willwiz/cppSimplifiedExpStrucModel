@@ -6,16 +6,10 @@
 //  Copyright © 2018 Will Zhang. All rights reserved.
 //
 
+
+#include "kinematics.hpp"
+
 #include "ModelCollagenTissueStruc.hpp"
-
-void calc_C(double vT[4], double res[4])
-{
-    double vTinv[4];
-
-    trans2D(vT, vTinv);
-
-    mult2D(vTinv, vT, res);
-}
 
 
 
@@ -27,7 +21,7 @@ int model_col_tissue_struc_PF::stress(double vF[4], double res[4])
     double lambda_ens[31];
     double Sf[31]; //Ensemble stress at each theta
     
-    calc_C(vF, vC);
+    calc_C_from_F(vF, vC);
     
     for (int i = 0; i < 31; i++) {
         lambda_ens[i] = sqrt(vC[0]*cos2_theta[i] + (vC[1] + vC[2])*cossin_theta[i] + vC[3]*sin2_theta[i]);

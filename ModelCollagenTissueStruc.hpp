@@ -9,11 +9,10 @@
 #ifndef ModelCollagenTissueStruc_hpp
 #define ModelCollagenTissueStruc_hpp
 
-#include "kinematics.hpp"
+
+
 #include "BetaDistribution.hpp"
 #include "ModelCollagenEnsemble.hpp"
-
-void calc_C(double vT[4], double res[4]);
 
 
 class model_col_tissue_struc_PF
@@ -38,16 +37,8 @@ class model_col_tissue_struc_PF
     //  The argument of this model are
     //      F11, F12, F21, F22
     
-private:
-    double kC;
-    double ODFmean;
-    double ODFstdev;
-    double Dxmean;
-    double Dxstdev;
-    double Dxlb;
-    double Dxub;
-    double kI;
-    double Dx_aniso;
+protected:
+    
     
     double F11_pushforward;
     double F12_pushforward;
@@ -77,6 +68,16 @@ private:
     void compute_range(double stdev){int_range_theta = fmin(M_PI_2, 4.0 * stdev);}
     
 public:
+    
+    double kC;
+    double ODFmean;
+    double ODFstdev;
+    double Dxmean;
+    double Dxstdev;
+    double Dxlb;
+    double Dxub;
+    double kI;
+    double Dx_aniso;
     
     beta_ODF fiber_odf;
     model_col_ens_struc_PF ensemblemodel;
@@ -176,7 +177,7 @@ public:
         }
     };
     
-    int stress(double vC[4], double res[4]);
+    int stress(double vF[4], double res[4]);
     
     
 };

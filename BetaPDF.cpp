@@ -8,6 +8,7 @@
 
 #include "BetaDistribution.hpp"
 
+beta_PDF::beta_PDF():lowerbound{1.0}, normalizing_constant{4.0}, alpham1{1.0}, betam1{1.0}, betaexponent{log(24.0)} {}
 
 void beta_PDF::set_parameters(double mean, double stdev, double lb, double ub)
 {

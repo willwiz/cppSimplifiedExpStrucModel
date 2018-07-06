@@ -9,7 +9,6 @@
 #ifndef BetaPDF_hpp
 #define BetaPDF_hpp
 
-#include <stdio.h>
 #include <math.h>
 
 class beta_PDF
@@ -34,7 +33,7 @@ public:
     
     void set_parameters(double mean, double stdev, double lb, double ub);
     
-    beta_PDF():lowerbound{1.0}, normalizing_constant{4.0}, alpham1{1.0}, betam1{1.0}, betaexponent{log(24.0)} {}
+    beta_PDF();
     
     beta_PDF(double mean, double stdev, double lb, double ub):lowerbound{lb}
     { set_parameters(mean, stdev, lb, ub);}
